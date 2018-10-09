@@ -1,0 +1,33 @@
+<%= form_for @person, :url => (@person.new_record? ? admin_persons_path : admin_person_path) do |f| %>
+  <%= render "admin/shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :gender %>
+  <%= f.select :gender, Person.genders.collect {|u| u[0]}, {:include_blank => true}, {:class => "form-control"} %>
+
+  <%= f.label :birthday %>
+  <%= f.text_field :birthday, value: nil, data: {datetimepicker: "true"}, class: "form-control publish-date" %>
+
+  <%= f.label :country %>
+  <%= f.text_field :country, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "form-control", style: "height: 20vh" %>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <% if f.object.new_record? %>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "upload-image" %>
+    <% else %>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "upload-image" %>
+      <%= image_tag f.object.image&.url %>
+    <% end %>
+  </div>
+
+  <div class="input-group action-button-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.button "Reset", class: "btn btn-default-btn", type: :reset %>
+  </div>
+<% end %>

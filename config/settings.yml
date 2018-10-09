@@ -1,0 +1,29 @@
+category:
+  title:
+    max_length: 50
+user:
+  email:
+    max_length: 50
+    case_sensitive: false
+  phone:
+    max_length: 13
+  password:
+    min_length: 6
+person:
+  name:
+    min_length: 3
+    max_length: 50
+movie:
+  name:
+    max_length: 50
+  alternative_name:
+    max_length: 50
+  relate_movies_quantity: 6
+movies_controller:
+  per_page: 12
+  movies_hot: 2 
+  number_movie: 12
+header:
+  movies_feature: 0
+  movies_series: 1
+  movies_hot: 2

@@ -1,0 +1,15 @@
+//= require jquery3
+//= require jquery.datetimepicker
+//= require popper
+//= require bootstrap-sprockets
+//= require plyr/dist/plyr.min
+//= require @fortawesome/fontawesome-free/js/all.min
+//= require rails-ujs
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
+//= require social-share-button
+//= require social-share-button/wechat
+//= require activestorage
+//= require turbolinks
+//= require_tree .

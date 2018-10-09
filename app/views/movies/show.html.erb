@@ -1,0 +1,153 @@
+<% provide :title, @movie.alternative_name %>
+<div class="container-fluid"style="background-color: #092b35;">
+  <div class="container-fluid">
+  <nav aria-label="breadcrumb" class="pt-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to t(".home"), root_path %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to t(".movie_category",
+          category: @movie.categories.first.title),
+          category_path(@movie.categories.first) %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= @movie.alternative_name %>
+      </li>
+    </ol>
+  </nav>
+
+  <% if @current_episode %>
+    <div class="video-player my-2">
+      <%= video_tag @current_episode.link, controls: true, autobuffer: true,
+        id: "player" %>
+    </div>
+  <% end %>
+
+  <% if @episodes.size.positive? %>
+    <h5><%= t ".pick-episode" %></h5>
+    <ul class="episode-list list-inline">
+      <% @episodes.each do |ep| %>
+        <li class="list-inline-item">
+          <%= link_to ep.order, movie_watch_path(@movie, ep.order),
+            class: "btn btn-outline-dark 
+            #{"active" if ep.order == @current_episode.order}" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="row my-5">
+    <div class="col-md-3 col-12">
+      <%= image_tag @movie.poster&.url,
+        class: "movie-poster img-fluid rounded mx-auto d-block" %>
+    </div>
+    <div class="col-md-9">
+      <div class="movie-button float-right">
+        <% if user_signed_in? && current_user.bookmarked?(@movie) %>
+          <%= link_to movie_bookmarks_path(@movie), method: :delete,
+          class: "btn btn-outline-primary", id: "bookmark" do %>
+            <i class="fas fa-bookmark fa-2x"></i>
+          <% end %>
+        <% else %>
+          <%= link_to movie_bookmarks_path(@movie), method: :post,
+          class: "btn btn-outline-primary", id: "bookmark" do %>
+            <i class="far fa-bookmark fa-2x"></i>
+          <% end %>
+        <% end %>
+        <button type="button" class="btn btn-warning btn-lg"
+          data-toggle="modal" data-target="#trailer_modal">
+            <%= t ".trailer" %>
+        </button>
+      </div>
+      <h2 class="p-1 movie-name text-danger">
+        <%= @movie.alternative_name %>
+      </h2>
+      <div class="px-1">
+        <span class="text-muted">
+          <%= @movie.name %>
+          (<%= @movie.publish_date.year %>)
+        </span>
+      </div>
+
+      <% [:director, :actor].each do |person| %>
+        <div class="p-1">
+          <span><%= t ".#{person}" %>:</span>
+
+          <% if @movie.send("#{person}s_size").positive? %>
+            <%= safe_join @movie.send("#{person}s").map { |p| 
+              link_to p.name, person_path(p),
+              title: p.name}, ",".html_safe %>
+          <% else %>
+            <%= t ".unknown" %>
+          <% end %>
+
+        </div>
+      <% end %>
+
+      <div class="p-1">
+        <span><%= t ".category" %>:</span>
+        <%= safe_join @movie.categories.map { |cate|
+          link_to cate.title, category_path(cate)}, ",".html_safe %>
+      </div>
+      <div class="p-1">
+        <span><%= t ".publish_date" %>:</span>
+        <%= l @movie.publish_date.to_date %>
+      </div>
+      <div class="p-1">
+        <span><%= t ".country" %>:</span>
+        <%= @movie.country %>
+      </div>
+      <div class="p-1">
+        <span><%= t ".view_count" %>:</span>
+        <%= @movie.view_count %>
+      </div>
+      <h5 class="p-1"><%= t ".description" %>:</h5>
+      <p class="small p-1">
+        <%= @movie.description %>
+      </p>
+    </div>
+    <div class="widget">
+      <div class="widget-body">
+        <div class="beta-sales beta-lists">
+          <%= social_share_button_tag(@movie.name, desc: @movie.name) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="fb-comments" data-href="<%= request.original_url %>"
+    data-numposts="5">
+  </div>
+  <div class="my-3">
+    <h5 class="font-weigh-bold"><%= t ".relate_movies" %></h5>
+    <div class="row">
+      <%= render partial: "movie", collection: @relate_movies %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="trailer_modal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= @movie.name %></h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="iframe-wrapper">
+          <%= @movie.trailer.html_safe %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <%= t ".close" %>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

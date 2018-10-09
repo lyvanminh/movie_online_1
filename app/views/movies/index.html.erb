@@ -1,0 +1,6 @@
+<div class="container-fluid" style="background-color: #092b35;">
+  <div class="row">
+    <%= render partial: "movie", collection: @movies_list %>
+  </div>
+  <%= paginate @movies_list, theme: "twitter-bootstrap-4" %>
+</div>
