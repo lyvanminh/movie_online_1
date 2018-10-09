@@ -1,0 +1,69 @@
+<% provide :title, @person.name %>
+
+<div class="container my-3">
+  <div class="row border border-light p-4 rounded">
+    <div class="col-md-3">
+      <%= image_tag @person.image, class: "img-fluid rounded mx-auto d-block" %>
+    </div>
+
+    <div class="col-md-9">
+      <h1 class="font-weight-bold text-info">
+        <%= @person.name %>
+      </h1>
+
+      <div class="p-1">
+        <span class="font-weight-bold">
+          <%= t ".gender" %>
+        </span>:
+        <%= @person.gender.humanize %>
+      </div>
+
+      <div class="p-1">
+        <span class="font-weight-bold">
+          <%= t ".birthday" %>
+        </span>:
+        <%= l @person.birthday.to_date %>
+      </div>
+
+      <div class="p-1">
+        <span class="font-weight-bold">
+          <%= t ".country" %>
+        </span>:
+        <%= @person.country %>
+      </div>
+
+      <button class="btn btn-secondary my-3"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapseDescription"
+        aria-expanded="false"
+        aria-controls="collapseDescription">
+        <%= t ".description" %>
+      </button>
+
+      <div class="collapse show" id="collapseDescription">
+        <div class="card card-body">
+          <%= @person.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cast -->
+  <h2 class="font-weight-bold mt-3">
+    <%= link_to t(".cast_movies"), "#cast_movies",
+      class: "badge badge-secondary" %>
+  </h2>
+  <div class="row border border-light" id="cast_movies">
+    <%= render partial: "movies/movie", collection: @cast_movies %>
+  </div>
+
+  <!-- direct -->
+  <h2 class="font-weight-bold mt-3">
+    <%= link_to t(".direct_movies"), "#direct_movies",
+      class: "badge badge-secondary" %>
+  </h2>
+  <div class="row border border-light" id="direct_movies">
+    <%= render partial: "movies/movie", collection: @cast_movies %>
+  </div>
+</div>

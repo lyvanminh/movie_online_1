@@ -1,0 +1,7 @@
+<div class="container-fluid mt-3">
+  <div class="category-text"><%= @category.title %></div>
+  <div class="row">
+    <%= render partial: "movies/movie", collection: @movies %>
+  </div>
+  <%= paginate @movies, theme: "twitter-bootstrap-4" %>
+</div>

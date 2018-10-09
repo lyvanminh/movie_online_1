@@ -1,0 +1,14 @@
+<tr>
+<% category.visible_fields.each do |field| %>
+  <td class="value"><%= category.send(field) %></td>
+<% end %>
+  <td class="value">
+    <%= link_to edit_admin_category_path(category), class: "btn btn-xs btn-outline btn-success" do %>
+    <i class="fas fa-pen"></i>
+    <% end %>
+    <%= link_to admin_category_path(category), class: "btn btn-xs btn-outline btn-danger",
+      method: :delete, data:{confirm: t(".confirm")} do %>
+    <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,165 @@
+en:
+  helpers:
+    application_helper:
+      text: "Movie online"
+      previous: Previous
+      next: Next
+  layouts:
+    header:
+      home: "Home"
+      feature_film: "Feature film"
+      series: "Television series"
+      hot_film: "Hot film"
+      action: "Action movie"
+      love: "Love film"
+      horror: "Horror movie"
+      swordplay: "Swordplay movie"
+      category: "Movie genre"
+      search: "Search"
+      login: "Login"
+      logout: "Logout"
+      edit_profile: "Edit profile"
+      sign_up: "Sign Up"
+      bookmark: "Bookmark"
+    footer:
+      new_film: "New film"
+      new_feature: "New feature film"
+      new_series: "New television series"
+      movie_theaters: "Movie theaters"
+      coming_soon: "Coming soon"
+      classic_film: "Classic film"
+      feature_film: "Feature film"
+      action: "Action movies"
+      love: "Love film"
+      horror: "Horror movies"
+      swordplay: "Swordplay movies"
+      cartoon: "Cartoon movies"
+      series: "Television series"
+      vietnam: "Vietnamese film"
+      korean: "National Korean film"
+      taiwan: "Taiwan movie"
+      chinese: "Chinese film"
+      american: "American film"
+      social: "Socical"
+  movies:
+    movies:
+      view: " view"
+    show:
+      pick-episode: "Pick Episode"
+      movie_not_found: "The movie doesn't exist"
+      relate_movies: "Relate Movies"
+      unknown: "Unknown"
+      actor: "Actor"
+      director: "Director"
+      publish_date: "Publish Date"
+      country: "Country"
+      category: "Category"
+      close: "Close"
+      movie_category: "%{category}"
+      home: "Home"
+      trailer: "Trailer"
+      close: "Close"
+      bookmark: "Bookmark"
+      unbookmark: "Unbookmark"
+  static_pages:
+    home:
+      home:
+      feature: "Feature film"
+      series: "Television series"
+      hot: "Hot film"
+  persons:
+    show:
+      gender: "Gender"
+      birthday: "Birthday"
+      country: "Country"
+      description: "More info"
+      cast_movies: "Cast"
+      direct_movies: "Direct"
+  shares:
+    movies:
+      view: " view"
+      hot: "Hot film"   
+  users:
+    shared:
+      links:
+        signup: "Sign Up"
+        forgot_password: "Forgot Password?"
+        resend_confirmation_instruction: "Didn't receive
+          confirmation instructions?"
+        resend_unlock_instructrion: "Didn't receive unlock instructions?"
+        oauth: "Sign in with %{provider}"
+        login: "Login"
+    sessions:
+      new:
+        login: "Login"
+    registrations:
+      new:
+        signup: "Sign Up"
+        minimum_password_length: "%{min_length} characters minimum"
+      edit:
+        edit_profile: "Edit Your Profile"
+        current_wait_for: "Currently waiting confirmation for:"
+        submit: "Edit"
+        leave_blank_if_dont_change: "leave blank if
+          you don't want to change it"
+        minimum_password_length: "%{min_length} characters minimum"
+        current_password_confirmation: "we need your current
+          password to confirm your changes"
+        cancel_account: "Cancel my account"
+        unhappy: "Unhappy?"
+        back: "Back"
+    confirmations:
+      new:
+        resend_confirm: "Resend confirmation instructions"
+        email_here: "Enter your email here"
+    passwords:
+      new:
+        forgot_password: "Forgot your password?"
+        email_here: "Enter your email here"
+        submit: "Send me reset password instructions"
+      edit:
+        change_your_password: "Change your password"
+        new_password: "New password"
+        confirm_password: "Confirm new password"
+        minimum_password_length: "%{min_length} characters minimum"
+    mailer:
+      confirmation:
+        welcome: "Welcome %{email}}"
+        can_confirm: "You can confirm your account email
+          through the link below:"
+        confirm: "Confirm my account"
+      email_change:
+        email_changed: "We're contacting you to notify you
+          that your email is being changed to %{email}"
+      password_change:
+        password_changed: "We're contacting you to notify 
+          you that your password has been changed."
+      reset_password_instructions:
+        hello: "Hello, %{email}"
+        ignore_html: "<p>If you didn't request this, please ignore this email.
+          </p><p>Your password won't change until you access the
+            link above and create a new one.</p>"
+        link_below: "Someone has requested a link to change your password.
+          You can do this through the link below."
+  fix_turbolinks:
+    alert:
+      search_alert: "Not empty"
+  bookmarks:
+    index:
+      title: "Bookmarks"
+      head_text: "Bookmark Movies"
+  activerecord:
+    attributes:
+      person:
+        genders:
+          male: "Male"
+          female: "Female"
+  categories:
+    show:
+      dont_find: "don't find"
+  admin:
+    shared:
+      error_messages:
+        has_error:
+          one: "The form contains %{count} error"
+          other: "The form contains %{count} errors"  

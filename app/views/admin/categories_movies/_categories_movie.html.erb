@@ -1,0 +1,14 @@
+<tr>
+  <td class="value"><%= categories_movie.movie.try(:id) %></td>
+  <td class="value"><%= categories_movie.movie.try(:name) %></td>
+  <td class="value"><%= categories_movie.category.try(:title) %></td>
+  <td class="value">
+    <%= link_to edit_admin_categories_movie_path(categories_movie), class: "btn btn-xs btn-outline btn-success" do %>
+    <i class="fas fa-pen"></i>
+    <% end %>
+    <%= link_to admin_categories_movie_path(categories_movie), class: "btn btn-xs btn-outline btn-danger",
+      method: :delete, data:{confirm: t(".confirm")} do %>
+    <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

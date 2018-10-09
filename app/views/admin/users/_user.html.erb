@@ -1,0 +1,14 @@
+<tr>
+<% user.visible_fields.each do |field| %>
+  <td class="value"><%= user.send(field) %></td>
+<% end %>
+  <td class="value">
+    <%= link_to "#", class: "btn btn-xs btn-outline btn-success" do %>
+    <i class="fas fa-pen"></i>
+    <% end %>
+    <%= link_to "#", class: "btn btn-xs btn-outline btn-danger",
+      method: :delete, data:{confirm: t(".confirm")} do %>
+    <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,49 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag("slide1.jpg", class: "d-block w-100") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("slide2.jpg", class: "d-block w-100") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("slide3.jpg", class: "d-block w-100") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("slide4.jpg", class: "d-block w-100") %>
+    </div>
+  </div>
+  <% slide.each do |key1, key2, key3, key4| %>
+    <%= link_to "#carouselExampleControls", class: key2,
+      role: "button", data: {slide: key4} do %>
+      <span class=<%= key3 %> aria-hidden="true"></span>
+      <span class="sr-only"><%= key1 %></span>
+    <% end %>
+  <% end %>
+</div>
+<div class="container-fluid" style="background-color: #092b35;">
+  <% [[t(".feature"), @home.features], [t(".series"), @home.series],
+    [t(".hot"), @home.hots]].each do |key1, key2| %>
+    <div class="text-list"><%= link_to key1, movies_path(movie_type: Settings.header.movies_feature)%></div>
+    <div class="row">
+      <%= render partial: "movies/movie", collection: key2 %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  var myIndex = 0;
+  carousel();
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("carousel-item");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000); // Change image every 2 seconds
+  }
+</script>

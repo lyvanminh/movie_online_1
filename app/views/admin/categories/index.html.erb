@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="page-header">Movies <%= link_to new_admin_category_path, 
+    								class: "btn btn-info btn-outline pull-right" do %>
+      <i class="fa fa-plus"></i> News
+    <% end %></h1>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t ".panel_heading" %>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body" style="font-size: 11px;">
+        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <table width="100%" class="table table-striped table-bordered
+            table-hover table-responsive dataTable no-footer dtr-inline responsive"
+            id="dataTables-hotel" role="grid" aria-describedby="dataTables-hotel_info" style="width: 100%;">
+              <tr role="row">
+                <th tabindex="0">
+                  Id
+                </th>
+                <th tabindex="1">
+                  Name
+                </th>
+                <th tabindex="2">
+                  Alternative name
+                </th>
+                <th tabindex="3">
+                </th>
+              </tr>
+              <%= render :partial => 'category', :collection => @categories %>
+          </table>
+          <%= paginate @categories, theme: "twitter-bootstrap-4" %>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
+      <!-- /.panel -->
+  </div>
+</div>
