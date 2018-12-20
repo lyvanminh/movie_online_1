@@ -1,0 +1,39 @@
+<%= form_for [:admin, @movie], html: {multipart: true} do |f| %>
+  <%= render "admin/shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :alternative_name %>
+  <%= f.text_field :alternative_name, class: "form-control" %>
+
+  <%= f.label :publish_date %>
+  <%= f.text_field :publish_date, class: "form-control" %>
+
+  <%= f.label :country %>
+  <%= f.text_field :country, class: "form-control" %>
+
+  <%= f.label :movie_type %>
+  <%= f.text_field :movie_type, class: "form-control" %>
+
+  <%= f.label :trailer %>
+  <%= f.text_field :trailer, class: "form-control" %>
+
+  <%= f.label :view_count %>
+  <%= f.text_field :view_count, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+
+    <div class="field">
+      <%= f.label :poster %><br>
+      <%= f.file_field :poster, accept: "image/jpeg,image/gif,image/png", class: "upload-image" %>
+    </div>
+
+  <div id="preview"></div>
+
+  <div class="input-group action-button-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.button "Reset", class: "btn btn-default-btn", type: :reset %>
+  </div>
+<% end %>

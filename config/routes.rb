@@ -17,4 +17,8 @@ Rails.application.routes.draw do
 
   resources :persons, only: :show
   resources :categories, only: :show
+  namespace :admin do
+    resources :movies
+    resources :categories
+  end
 end

@@ -10,6 +10,6 @@ class CategoriesController < ApplicationController
     end
 
     @movies = @category.movies.page(params[:page])
-                       .per Settings.movies_controller.per_page
+                       .per(18)
   end
 end

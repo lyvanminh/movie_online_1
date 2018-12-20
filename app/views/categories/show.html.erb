@@ -1,5 +1,5 @@
 <div class="container-fluid mt-3">
-  <h2><%= @category.title %></h2>
+  <div class="category-text"><%= @category.title %></div>
   <div class="row">
     <%= render partial: "movies/movie", collection: @movies %>
   </div>

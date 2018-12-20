@@ -1,4 +1,4 @@
-<% provide :title, @movie.name %>
+<% provide :title, @movie.alternative_name %>
 <div class="container">
   <nav aria-label="breadcrumb" class="pt-3">
     <ol class="breadcrumb">
@@ -11,7 +11,7 @@
           category_path(@movie.categories.first) %>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        <%= @movie.name %>
+        <%= @movie.alternative_name %>
       </li>
     </ol>
   </nav>
@@ -60,11 +60,11 @@
         </button>
       </div>
       <h2 class="p-1 movie-name text-danger">
-        <%= @movie.name %>
+        <%= @movie.alternative_name %>
       </h2>
       <div class="px-1">
         <span class="text-muted">
-          <%= @movie.alternative_name %>
+          <%= @movie.name %>
           (<%= @movie.publish_date.year %>)
         </span>
       </div>
@@ -87,7 +87,7 @@
       <div class="p-1">
         <span><%= t ".category" %>:</span>
         <%= safe_join @movie.categories.map { |cate|
-          link_to cate.title, "#"}, ",".html_safe %>
+          link_to cate.title, category_path(cate)}, ",".html_safe %>
       </div>
       <div class="p-1">
         <span><%= t ".publish_date" %>:</span>
@@ -96,6 +96,10 @@
       <div class="p-1">
         <span><%= t ".country" %>:</span>
         <%= @movie.country %>
+      </div>
+      <div class="p-1">
+        <span><%= t ".view_count" %>:</span>
+        <%= @movie.view_count %>
       </div>
       <h5 class="p-1"><%= t ".description" %>:</h5>
       <p class="small p-1">

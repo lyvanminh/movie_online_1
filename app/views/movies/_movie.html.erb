@@ -3,7 +3,7 @@
     <div class="list-movie">
       <%= image_tag movie.poster, class: "image rounded" %>
       <div class="overlay">
-        <%= link_to movie.name, movie_path(movie) %>
+        <%= link_to movie.alternative_name, movie_path(movie) %>
         <p><%= movie.view_count %><%= t ".view" %></p>
       </div>
     </div>

@@ -4,16 +4,29 @@ class MoviesController < ApplicationController
 
   def index
     if params[:q]
-      @movies_list = @init_ransack.result.page(params[:page])
-                                  .per Settings.movies_controller.per_page
+      @movies_search = @init_ransack.result(distinct: true)
+      @movies_list = @movies_search.page(params[:page]).per(18)
     else
       @movies_list = Movie.where(movie_type: params[:movie_type])
                           .page(params[:page])
-                          .per Settings.movies_controller.per_page
+                          .per(18)
     end
   end
 
-  def show; end
+  def show
+    cookies.permanent.encrypted[:uuid] = SecureRandom.uuid unless cookies[:uuid]
+
+    view_times = ViewCount.find_by uuid: cookies.encrypted[:uuid],
+                             movie: @movie
+
+    unless view_times
+      @movie.view_counts.create! uuid: cookies.encrypted[:uuid],
+        created_at: Time.now
+    end
+
+    @movie.increment! :view_count
+    @movie.save
+  end
 
   private
 
@@ -40,7 +53,7 @@ class MoviesController < ApplicationController
   end
 
   def find_movie_episodes
-    return if @movie.episodes_size == 1
+    return if @movie.episodes_size == 0
     @episodes = @movie.episodes.order_asc
   end
 end

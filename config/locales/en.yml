@@ -55,12 +55,13 @@ en:
       country: "Country"
       category: "Category"
       close: "Close"
-      movie_category: "Category %{category}"
+      movie_category: "%{category}"
       home: "Home"
       trailer: "Trailer"
       close: "Close"
       bookmark: "Bookmark"
       unbookmark: "Unbookmark"
+  static_pages:
     home:
       home:
       feature: "Feature film"
@@ -156,3 +157,9 @@ en:
   categories:
     show:
       dont_find: "don't find"
+  admin:
+    shared:
+      error_messages:
+        has_error:
+          one: "The form contains %{count} error"
+          other: "The form contains %{count} errors"  
