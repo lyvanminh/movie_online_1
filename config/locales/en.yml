@@ -121,7 +121,7 @@ en:
         change_your_password: "Change your password"
         new_password: "New password"
         confirm_password: "Confirm new password"
-        minimum_password_length: "%{min_lenth} characters minimum"
+        minimum_password_length: "%{min_length} characters minimum"
     mailer:
       confirmation:
         welcome: "Welcome %{email}}"

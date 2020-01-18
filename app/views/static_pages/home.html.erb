@@ -21,7 +21,7 @@
     <% end %>
   <% end %>
 </div>
-<div class="container-fluid mt-3">
+<div class="container-fluid" style="background-color: #092b35;">
   <% [[t(".feature"), @home.features], [t(".series"), @home.series],
     [t(".hot"), @home.hots]].each do |key1, key2| %>
     <div class="text-list"><%= link_to key1, movies_path(movie_type: Settings.header.movies_feature)%></div>

@@ -31,7 +31,7 @@
     <div class="form-group">
       <%= f.label :password, class: "font-weight-bold" %>
       <% if @minimum_password_length %>
-      <em>
+      <em style="color: #007bff;">
         (<%= t ".minimum_password_length",
           min_length:@minimum_password_length %>)
       </em>
@@ -50,8 +50,4 @@
       <%= f.submit t(".signup"), class: "btn btn-success btn-block" %>
     </div>
   <% end %>
-  
-  <div class="text-center">
-    <%= render "users/shared/links" %>
-  </div>
 </div>

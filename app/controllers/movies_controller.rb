@@ -22,9 +22,17 @@ class MoviesController < ApplicationController
     unless view_times
       @movie.view_counts.create! uuid: cookies.encrypted[:uuid],
         created_at: Time.now
+        @movie.increment! :view_count
+    else
+      if view_times.created_at.strftime("%H") == Time.now.utc.strftime("%H")
+        if Time.now.utc.strftime("%M").to_i - view_times.created_at.strftime("%M").to_i >= 15
+          @movie.increment! :view_count
+        end
+      elsif Time.now.utc.strftime("%H") > view_times.created_at.strftime("%H")
+        view_times.update! created_at: Time.now
+        @movie.increment! :view_count
+      end
     end
-
-    @movie.increment! :view_count
     @movie.save
   end
 
