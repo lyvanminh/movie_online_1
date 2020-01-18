@@ -27,6 +27,7 @@ gem "sass-rails", "~> 5.0"
 gem "social-share-button"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "pry"
 
 group :development, :test do
   gem "better_errors"
