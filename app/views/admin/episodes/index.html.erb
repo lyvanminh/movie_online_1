@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h1 class="page-header">Movies <%= link_to new_admin_movie_path, 
+    <h1 class="page-header">Episodes <%= link_to new_admin_episode_path, 
     								class: "btn btn-info btn-outline pull-right" do %>
       <i class="fa fa-plus"></i> News
     <% end %></h1>
@@ -8,13 +8,6 @@
       <div class="panel-heading">
         <%= t ".panel_heading" %>
       </div>
-      <nav class="navbar navbar-light bg-light mr-auto">
-        <%= search_form_for @init_ransack, url: admin_movies_path, class: "form-inline box_admin_search" do |f| %>
-          <%= f.text_field :seach_movie_cont,
-            class: "form-control mr-sm-2", placeholder:"Search"%>
-          <i class="icon icon-search"></i>
-        <% end %>
-      </nav>
       <!-- /.panel-heading -->
       <div class="panel-body" style="font-size: 11px;">
         <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -29,35 +22,20 @@
                   Name
                 </th>
                 <th tabindex="2">
-                  Alternative name
+                  Order
                 </th>
                 <th tabindex="3">
-                  Public date
+                  Link
                 </th>
                 <th tabindex="4">
-                  Country
+                  Movie
                 </th>
                 <th tabindex="5">
-                  Movie type
-                </th>
-                <th tabindex="6">
-                  Trailer
-                </th>
-                <th tabindex="7">
-                  Poster
-                </th>
-                <th tabindex="8">
-                  View count
-                </th>
-                <th tabindex="9">
-                  Description
-                </th>
-                <th tabindex="10">
                 </th>
               </tr>
-              <%= render :partial => 'movie', :collection => @movies %>
+              <%= render :partial => 'episode', :collection => @episodes %>
           </table>
-          <%= paginate @movies, theme: "twitter-bootstrap-4" %>
+          <%= paginate @episodes, theme: "twitter-bootstrap-4" %>
         </div>
         <!-- /.table-responsive -->
       </div>

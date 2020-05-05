@@ -1,0 +1,16 @@
+<tr>
+  <td class="value"><%= episode.try(:id) %></td>
+  <td class="value"><%= episode.try(:name) %></td>
+  <td class="value"><%= episode.try(:order) %></td>
+  <td class="value"><%= episode.try(:link) %></td>
+  <td class="value"><%= episode.movie.try(:name) %></td>
+  <td class="value">
+    <%= link_to edit_admin_episode_path(episode), class: "btn btn-xs btn-outline btn-success" do %>
+    <i class="fas fa-pen"></i>
+    <% end %>
+    <%= link_to admin_episode_path(episode), class: "btn btn-xs btn-outline btn-danger",
+      method: :delete, data:{confirm: "Do you want to delete?"} do %>
+    <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

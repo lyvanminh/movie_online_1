@@ -7,9 +7,13 @@ class MoviesController < ApplicationController
       @movies_search = @init_ransack.result(distinct: true)
       @movies_list = @movies_search.page(params[:page]).per(18)
     else
-      @movies_list = Movie.where(movie_type: params[:movie_type])
-                          .page(params[:page])
-                          .per(18)
+      if params[:movie_type].present? && params[:movie_type] == "1"
+        @movies_list = serie_movies.page(params[:page]).per(18)
+      else
+        @movies_list = Movie.where(movie_type: params[:movie_type])
+                            .page(params[:page])
+                            .per(18)
+      end
     end
   end
 
@@ -63,5 +67,12 @@ class MoviesController < ApplicationController
   def find_movie_episodes
     return if @movie.episodes_size == 0
     @episodes = @movie.episodes.order_asc
+  end
+
+  def serie_movies
+    arr_movie_id = Episode.all.pluck(:movie_id).uniq
+    if arr_movie_id.present?
+      movie = Movie.where(id: arr_movie_id)
+    end
   end
 end

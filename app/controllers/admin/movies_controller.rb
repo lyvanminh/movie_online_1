@@ -1,8 +1,15 @@
 class Admin::MoviesController < Admin::BaseController
   before_action :set_movie, only: %i(edit show destroy)
+  before_action :init_ransack_admin, only: :index
+  skip_before_action :init_ransack
 
   def index
-    @movies = Movie.all.page(params[:page]).per(10)
+    if params[:q]
+      @movies_search = @init_ransack.result(distinct: true)
+      @movies = @movies_search.page(params[:page]).per(10)
+    else
+      @movies = Movie.all.page(params[:page]).per(10)
+    end
   end
 
   def new
@@ -11,6 +18,7 @@ class Admin::MoviesController < Admin::BaseController
 
   def create
     @movie = Movie.new movie_params
+    binding.pry
     if @movie.save
       flash[:success] = "Create success!"
       redirect_to admin_movies_path
@@ -63,5 +71,9 @@ class Admin::MoviesController < Admin::BaseController
     params.require(:movie).permit :name, :alternative_name, :publish_date,
       :country, :movie_type, :trailer,
       :poster, :view_count, :description
+  end
+
+  def init_ransack_admin
+    @init_ransack = Movie.ransack(params[:q])
   end
 end

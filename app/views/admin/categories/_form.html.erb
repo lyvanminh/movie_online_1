@@ -1,6 +1,7 @@
 <%= form_for [:admin, @category], html: {multipart: true} do |f| %>
   <%= render "admin/shared/error_messages", object: f.object %>
 
+  <h3 style="margin-top: 20px;">Create new Category</h3>
   <%= f.label :title %>
   <%= f.text_field :title, class: "form-control" %>
 

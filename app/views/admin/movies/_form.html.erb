@@ -1,6 +1,7 @@
 <%= form_for [:admin, @movie], html: {multipart: true} do |f| %>
   <%= render "admin/shared/error_messages", object: f.object %>
 
+  <h3 style="margin-top: 20px;">Create new movie</h3>
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
 
@@ -8,7 +9,7 @@
   <%= f.text_field :alternative_name, class: "form-control" %>
 
   <%= f.label :publish_date %>
-  <%= f.text_field :publish_date, value: nil, data: {datetimepicker: "true"}, class: "form-control publish-date" %>
+  <%= f.text_field :publish_date, value: f.object.new_record? ? nil : f.object.publish_date, data: {datetimepicker: "true"}, class: "form-control publish-date" %>
 
   <%= f.label :country %>
   <%= f.text_field :country, class: "form-control" %>

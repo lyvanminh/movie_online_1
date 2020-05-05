@@ -1,6 +1,7 @@
 <%= form_for @movies_person, :url => (@movies_person.new_record? ? admin_movies_persons_path : admin_movies_person_path) do |f| %>
   <%= render "admin/shared/error_messages", object: f.object %>
 
+  <h3 style="margin-top: 20px;">Create new movies_person</h3>
   <%= f.label :movie %>
   <%= f.select :movie_id, Movie.all.collect {|u| [u.name, u.id]}, {:include_blank => true}, {:class => "form-control"} %>
 

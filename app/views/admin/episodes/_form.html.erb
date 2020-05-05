@@ -1,12 +1,18 @@
-<%= form_for [:admin, @categories_movie], html: {multipart: true} do |f| %>
+<%= form_for [:admin, @episode], html: {multipart: true} do |f| %>
   <%= render "admin/shared/error_messages", object: f.object %>
 
-  <h3 style="margin-top: 20px;">Create new categories_movie</h3>
+  <h3 style="margin-top: 20px;">Create new episode</h3>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :order %>
+  <%= f.text_field :order, class: "form-control" %>
+
+  <%= f.label :link %>
+  <%= f.text_field :link, class: "form-control" %>
+
   <%= f.label :movie %>
   <%= f.select :movie_id, Movie.all.collect {|u| [u.name, u.id]}, {:include_blank => true}, {:class => "form-control"} %>
-
-  <%= f.label :category %>
-  <%= f.select :category_id, Category.all.collect {|u| [u.title, u.id]}, {:include_blank => true}, {:class => "form-control"} %>
 
   <div class="input-group action-button-group">
     <%= f.submit "Submit", class: "btn btn-primary" %>

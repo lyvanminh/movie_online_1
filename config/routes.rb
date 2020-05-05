@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :users, only: :index
     resources :categories_movies
     resources :movies_persons
+    resources :episodes
   end
 end

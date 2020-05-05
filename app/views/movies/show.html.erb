@@ -1,6 +1,6 @@
 <% provide :title, @movie.alternative_name %>
-<div class="container-fluid"style="background-color: #092b35;">
-  <div class="container-fluid">
+<div class="container-fluid" style="background-color: #092b35;">
+  <div class="container-fluid" style="padding-left: 110px; padding-right: 110px;">
   <nav aria-label="breadcrumb" class="pt-3">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -18,9 +18,9 @@
   </nav>
 
   <% if @current_episode %>
-    <div class="video-player my-2">
+    <div class="video-player my-2" style="text-align: center;">
       <%= video_tag @current_episode.link, controls: true, autobuffer: true,
-        id: "player" %>
+        id: "player", style: "width: 100%;" %>
     </div>
   <% end %>
 
@@ -61,11 +61,11 @@
         </button>
       </div>
       <h2 class="p-1 movie-name text-danger">
-        <%= @movie.alternative_name %>
+        <%= @movie.name %>
       </h2>
       <div class="px-1">
         <span class="text-muted">
-          <%= @movie.name %>
+          <%= @movie.alternative_name %>
           (<%= @movie.publish_date.year %>)
         </span>
       </div>
@@ -107,7 +107,7 @@
         <%= @movie.description %>
       </p>
     </div>
-    <div class="widget">
+    <div class="widget col-md-3 col-12" style="text-align: center;">
       <div class="widget-body">
         <div class="beta-sales beta-lists">
           <%= social_share_button_tag(@movie.name, desc: @movie.name) %>

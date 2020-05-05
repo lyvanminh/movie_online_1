@@ -7,7 +7,7 @@
     <i class="fas fa-pen"></i>
     <% end %>
     <%= link_to admin_movie_path(movie), class: "btn btn-xs btn-outline btn-danger",
-      method: :delete, data:{confirm: t(".confirm")} do %>
+      method: :delete, data:{confirm: "Do you want to delete?"} do %>
     <i class="fa fa-trash"></i>
     <% end %>
   </td>
