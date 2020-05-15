@@ -20,12 +20,17 @@
       <% end %>
       <ul class="dropdown-menu dropdown-user">
         <li>
-          <%= link_to current_user do %>
+          <%= link_to user_session_path do %>
           <i class="fa fa-user fa-fw"></i>
           <%= t ".profile" %>
           <% end %>
         </li>
-
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-share"></i>
+            Log out
+          <% end %>
+        </li>
       </ul>
       <!-- /.dropdown-user -->
     </li>
