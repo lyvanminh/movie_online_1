@@ -3,7 +3,7 @@
 <div class="container my-3">
   <div class="row border border-light p-4 rounded">
     <div class="col-md-3">
-      <%= image_tag @person.image, class: "img-fluid rounded mx-auto d-block" %>
+      <%= image_tag @person&.image&.url, class: "img-fluid rounded mx-auto d-block" %>
     </div>
 
     <div class="col-md-9">

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }, path: "", path_names: {sign_in: "login", sign_out: "logout",
       sign_up: "signup", edit:"edit-profile"}
   resources :bookmarks, only: :index
+  resources :rate_movies
   resources :movies, only: %i(index show) do
     get "/ep-:order", to: "movies#show", as: :watch
     resources :bookmarks, only: :create
@@ -25,5 +26,6 @@ Rails.application.routes.draw do
     resources :categories_movies
     resources :movies_persons
     resources :episodes
+    resources :view_statistics, only: :index
   end
 end

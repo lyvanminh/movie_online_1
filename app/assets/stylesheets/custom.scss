@@ -470,3 +470,27 @@ input {
 .panel-body nav{
   text-align: center;
 }
+.film-rating {
+  font-size: 20px;
+  color: lightgrey;
+  cursor: pointer;
+  .checked {
+    color: orange;
+  }
+}
+
+.modal-content {
+  width: 34vh !important;
+  .modal-body {
+    padding: 10px 2px 2px 2px !important;
+    text-align: center;
+  }
+  .modal-footer {
+    text-align: center;
+    display: initial;
+    justify-content: flex-end;
+    padding: 5px;
+    border-top: 1px solid #e9ecef;
+  }
+}
+

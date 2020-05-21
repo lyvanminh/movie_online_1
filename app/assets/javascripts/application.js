@@ -12,4 +12,5 @@
 //= require social-share-button/wechat
 //= require activestorage
 //= require turbolinks
+//= require show_movie
 //= require_tree .

@@ -12,11 +12,13 @@ class Movie < ApplicationRecord
   has_many :bookmark_users, through: :movies_users, source: :user
   has_many :view_counts, dependent: :destroy
   has_many :episodes, dependent: :destroy
+  has_many :rate_movies, dependent: :destroy
   enum movie_type: {features: 0, series: 1, hots: 2}
   accepts_nested_attributes_for :categories_movies, allow_destroy: true
 
   scope :sort_by_bookmark_desc, ->{order movies_users[:created_at].desc}
   scope :sort_by_publish, ->(type){order publish_date: type}
+  scope :get_movie_type, ->(type){where(movie_type: type)}
 
   validates :name, presence: true,
     length: {maximum: Settings.movie.name.max_length}
@@ -28,7 +30,7 @@ class Movie < ApplicationRecord
   delegate :size, to: :actors, prefix: true
   delegate :size, to: :directors, prefix: true
 
-  ransack_alias :seach_movie, :name_or_alternative_name_or_actors_name_or_directors_name_or_categories_title
+  ransack_alias :seach_movie, :name_or_alternative_name_or_actors_name_or_directors_name_or_categories_title_or_publish_date
 
 
   VisibleFields = [:id, :name, :alternative_name, :publish_date, :country, :movie_type, :trailer, :poster, :view_count, :description]

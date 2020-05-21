@@ -7,6 +7,19 @@ class Admin::MoviesController < Admin::BaseController
     if params[:q]
       @movies_search = @init_ransack.result(distinct: true)
       @movies = @movies_search.page(params[:page]).per(10)
+      if params[:q][:seach_movie_cont].present?
+        if params[:sort_by] == "desc"
+          @movies = @movies.order(view_count: :desc)
+        elsif params[:sort_by] == "asc"
+          @movies = @movies.order(view_count: :asc)
+        end
+      else
+        if params[:sort_by] == "desc"
+          @movies = Movie.all.order(view_count: :desc).page(params[:page]).per(10)
+        elsif params[:sort_by] == "asc"
+          @movies = Movie.all.order(view_count: :asc).page(params[:page]).per(10)
+        end
+      end
     else
       @movies = Movie.all.page(params[:page]).per(10)
     end
@@ -18,7 +31,6 @@ class Admin::MoviesController < Admin::BaseController
 
   def create
     @movie = Movie.new movie_params
-    binding.pry
     if @movie.save
       flash[:success] = "Create success!"
       redirect_to admin_movies_path

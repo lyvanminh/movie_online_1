@@ -12,7 +12,7 @@
   <%= f.text_field :link, class: "form-control" %>
 
   <%= f.label :movie %>
-  <%= f.select :movie_id, Movie.all.collect {|u| [u.name, u.id]}, {:include_blank => true}, {:class => "form-control"} %>
+  <%= f.select :movie_id, Movie.get_movie_type(1).collect {|u| [u.name, u.id]}, {:include_blank => true}, {:class => "form-control"} %>
 
   <div class="input-group action-button-group">
     <%= f.submit "Submit", class: "btn btn-primary" %>

@@ -3,6 +3,7 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable, :confirmable
   has_many :movies_users, dependent: :destroy
   has_many :bookmark_movies, through: :movies_users, source: :movie
+  has_many :rate_movies, through: :movies_users, source: :movie
   enum role: {user: 0, sub: 1, admin: 2}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
@@ -22,5 +23,9 @@ class User < ApplicationRecord
 
   def bookmarked? movie
     bookmark_movies.include? movie
+  end
+
+  def rate_movie? movie
+    rate_movies.include? movie
   end
 end

@@ -8,22 +8,6 @@
       <div class="panel-heading">
         <%= t ".panel_heading" %>
       </div>
-
-      <%= search_form_for @init_ransack, url: admin_movies_path, class: "form-inline box_admin_search" do |f| %>
-        <nav class="navbar navbar-light bg-light mr-auto">
-          <%= f.text_field :seach_movie_cont,
-            class: "form-control mr-sm-2", placeholder:"Search"%>
-          <i class="icon icon-search"></i>
-        </nav>
-        <select name="sort_by" class="sort_by">
-          <option>Sort by</option>
-          <option name="mosts_view_count" value="desc">Mosts view count</option>
-          <option name="mosts_view_count" value="asc">Least view count</option>
-        </select>
-        <br/>
-        <%= f.submit "Submit", class: "btn btn-primary admin_button_submit" %>
-      <% end %>
-
       <!-- /.panel-heading -->
       <div class="panel-body" style="font-size: 11px;">
         <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -50,18 +34,7 @@
                   Movie type
                 </th>
                 <th tabindex="6">
-                  Trailer
-                </th>
-                <th tabindex="7">
-                  Poster
-                </th>
-                <th tabindex="8">
                   View count
-                </th>
-                <th tabindex="9">
-                  Description
-                </th>
-                <th tabindex="10">
                 </th>
               </tr>
               <%= render :partial => 'movie', :collection => @movies %>

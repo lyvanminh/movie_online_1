@@ -4,8 +4,14 @@ class MoviesController < ApplicationController
 
   def index
     if params[:q]
-      @movies_search = @init_ransack.result(distinct: true)
-      @movies_list = @movies_search.page(params[:page]).per(18)
+      if params[:q][:seach_movie_cont].length == 4 && params[:q]["seach_movie_cont"].to_i.is_a?(Integer)
+        start_year = ("01/01/" + params[:q][:seach_movie_cont]).to_date.beginning_of_day
+        end_year = ("31/12/" + params[:q][:seach_movie_cont]).to_date.end_of_day
+        @movies_list = Movie.where(:publish_date => start_year..end_year).page(params[:page]).per(18)
+      else
+        @movies_search = @init_ransack.result(distinct: true)
+        @movies_list = @movies_search.page(params[:page]).per(18)
+      end
     else
       if params[:movie_type].present? && params[:movie_type] == "1"
         @movies_list = serie_movies.page(params[:page]).per(18)

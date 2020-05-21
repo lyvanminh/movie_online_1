@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_081551) do
+ActiveRecord::Schema.define(version: 2020_05_17_084434) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_081551) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_movies", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories_movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category_id"
     t.integer "movie_id"
     t.datetime "created_at", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_081551) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movies_people", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movies_people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "person_id"
     t.integer "role", default: 0
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_081551) do
     t.index ["movie_id", "person_id"], name: "index_movies_people_on_movie_id_and_person_id"
   end
 
-  create_table "movies_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movies_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 2018_10_17_081551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image"
+  end
+
+  create_table "rate_movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["movie_id", "user_id"], name: "index_rate_movies_on_movie_id_and_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
